@@ -7,8 +7,8 @@ services:
     ports:
       - "3000:3000"
     volumes:
-      - .:/usr/src/app
-      - /usr/src/app/node_modules
+      - .:/app
+      - /app/node_modules
     command: npx nodemon server.js
 
   yaniv-frontend:
