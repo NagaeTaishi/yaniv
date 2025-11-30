@@ -10,3 +10,16 @@ services:
       - .:/usr/src/app
       - /usr/src/app/node_modules
     command: npx nodemon server.js
+
+  yaniv-frontend:
+    build: ./frontend
+    container_name: yaniv-frontend
+    ports:
+      - "5173:5173"
+    volumes:
+      - ./frontend:/app
+      - /app/node_modules
+    environment:
+      - VITE_API_URL=http://localhost:3000
+    depends_on:
+      - yaniv-server
