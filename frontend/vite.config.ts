@@ -10,5 +10,17 @@ export default defineConfig({
     watch: {
       usePolling: true,
     },
+    proxy: {
+      '/api': {
+        target: 'http://yaniv-server:3000',
+        changeOrigin: true,
+        rewrite: (path) => path.replace(/^\/api/, ''),
+      },
+      '/socket.io': {
+        target: 'http://yaniv-server:3000',
+        changeOrigin: true,
+        ws: true,
+      },
+    },
   },
 })
